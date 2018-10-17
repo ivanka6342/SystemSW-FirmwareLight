@@ -54,12 +54,12 @@ public:
 	
 };
 
-void printAppleInfo(Apple apple) {
+void printAppleInfo(Apple* apple) {
 	static int appleCount = 0;
 	appleCount++;
-	cout << "Apple #" << appleCount
-		<< "color: " << getAppleColorAsString(apple.getColor())
-		<< "weigth: " << apple.getWeight()
+	cout << "Apple #" << appleCount << ": "
+		<< "color: " << getAppleColorAsString(apple->getColor()) << ", "
+		<< "weigth: " << apple->getWeight()
 		<< endl;
 }
 
@@ -84,7 +84,7 @@ int main() {
 
 	auto beginIterator = arr.begin();
 	auto endIterator = arr.end();
-	cout << endl << "Array in derect order:" << endl; 
+	cout << endl << "Array in direct order:" << endl; 
 	for_each(beginIterator, endIterator, printArrElem);
 	
 	auto rBeginIterator = arr.rbegin();
@@ -97,6 +97,7 @@ int main() {
 	cout << endl << "Array after arr.fill(): " << endl;
 	for_each(beginIterator, endIterator, printArrElem);
 	
+	cout << endl;
 	// Array of objects
 	Apple apple1;
 	Apple* apple2 = new Apple(RED, 120.65);
@@ -104,17 +105,10 @@ int main() {
 	appleArr apples = { &apple1, apple2 };
 	// I even can't add element to Array by command like appleArr.add()
 	// because it's static array. should use std::vector
+
 	for (appleArr::const_iterator iter = apples.begin(); iter != apples.end(); iter++) {
-		printArrElem(iter);
+		printAppleInfo(*iter);
 	}
-
-
-
-/*
-for (int i = 0; i < arr.size(); i++) {
-	cout << i << ": " << get<0>(arr) << endl;
-}*/
-//cout << get<0>(arr) << endl;
 
 
 	system("pause");
