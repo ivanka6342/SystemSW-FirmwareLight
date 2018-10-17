@@ -5,3 +5,14 @@ Debug/**
 *.log
 *.tlog
 *.exe
+*.ilk
+*.pdb
+**/.vs
+.vs/**
+**/.vs/**
+*.vcxproj
+*.filters
+*.user
+*.obj
+*.idb
+*.lastbuildstate
