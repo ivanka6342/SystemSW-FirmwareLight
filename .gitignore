@@ -1,0 +1,7 @@
+*.sln
+**/Debug
+Debug/**
+**/Debug/**
+*.log
+*.tlog
+*.exe
