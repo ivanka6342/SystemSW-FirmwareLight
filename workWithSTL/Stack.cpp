@@ -18,6 +18,7 @@ void showStack(stack<double> st) {
 
 // custom stack initializer by function with variable number of parameters
 void initStack(stack<double> *st, int n, ...) {
+	/*
 	int* ptr = &n;
 	cout << "param count: " << *ptr << endl;
 	ptr++;
@@ -27,7 +28,19 @@ void initStack(stack<double> *st, int n, ...) {
 		st->push(*param);
 		param++;
 	}
+	*/
+	union ChangePtr {
+		int* ptr;
+		double* param; 
+	}value;
+	
+	value.ptr = &n;
+	value.ptr++;
 
+	for (int i = 0; i < n; i++) {
+		st->push(*(value.param));
+		value.param++;
+	}
 }
 
 int main() {
