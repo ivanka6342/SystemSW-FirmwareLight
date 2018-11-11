@@ -9,8 +9,16 @@ void showElem(int el) {
 	cout << el << " ";
 }
 
+void showBucketSizes(unordered_set<int> &uos) {
+	cout << "( ";
+	for (int i = 0; i < uos.bucket_count(); i++)
+		cout << uos.bucket_size(i) << " ";
+	cout << ")" << endl;
+}
+
 void showUOSet(unordered_set<int> &uos, int num) {
-	cout << "uo-set " << num << " size: " << uos.size() << endl;
+	cout << "uo-set " << num << " size: " << uos.size() << ", number of buckets: " << uos.bucket_count();
+	showBucketSizes(uos);
 	if (!uos.empty())
 		for_each(uos.begin(), uos.end(), showElem);
 	else cout << "empty";
