@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "ret result"
+# write info to stdout
+echo "child info"
